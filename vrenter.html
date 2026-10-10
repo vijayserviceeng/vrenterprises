@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Enterprises | Computer Manufacturer, Sales & IT Services Tamil Nadu</title>
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #131a2b;
+            --bg-nav: #0f1422;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --accent: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--bg-nav);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 24px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 20px 100px 20px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1e293b 0%, var(--bg-main) 70%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        .badge {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Content Sections */
+        section {
+            padding: 90px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Product Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #1e293b;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 12px;
+            background: #1e293b;
+            padding: 4px 10px;
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Services Grid */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background: linear-gradient(to right, var(--bg-card), rgba(19, 26, 43, 0.5));
+            padding: 25px;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .service-item h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        /* Contact & Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .info-link {
+            display: block;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea, select {
+            background-color: var(--bg-main);
+            border: 1px solid #1e293b;
+            padding: 12px;
+            color: white;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 15px;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        form button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        footer {
+            background-color: var(--bg-nav);
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid #1e293b;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 34px; }
+            nav { display: none; } /* Mobile basic fallback */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">VR <span>ENTERPRISES</span></div>
+            <nav>
+                <a href="#hardware">Our Products</a>
+                <a href="#services">Sales & Services</a>
+                <a href="#quote">Request Quote</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="badge">OEM Hardware Manufacturers & Assemblers</div>
+        <h1>Next-Gen Compute Infrastructure Built in Tamil Nadu</h1>
+        <p>Custom-engineered hardware tailored for industrial automation, enterprise data centers, corporate offices, and local commercial needs.</p>
+        <a href="#quote" class="btn">Get Custom Hardware Quote</a>
+    </section>
+
+    <!-- Hardware Catalog Showcase -->
+    <section id="hardware">
+        <h2 class="section-title">Industrial & Consumer Hardware Catalog</h2>
+        <p class="section-subtitle">We assemble and manufacture custom system configurations optimized for performance, scalability, and extreme operating conditions.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <span class="tag">Enterprise Infrastructure</span>
+                <h3 style="margin-top: 10px;">Servers & Storage</h3>
+                <p>High-reliability rackmount and tower servers designed for data centers, virtualization, and corporate networks.</p>
+            </div>
+            <div class="card">
+                <span class="tag">High-Performance</span>
+                <h3 style="margin-top: 10px;">Engineering Workstations</h3>
+                <p>Heavy-duty computing units configured for architectural CAD modeling, 3D rendering, and heavy data computations.</p>
+            </div>
+            <div class="card">
+                <span class="tag">Rugged Systems</span>
+                <h3 style="margin-top: 10px;">Industrial PCs (IPC)</h3>
+                <p>Dust-resistant, vibration-proof, fanless compute nodes optimized for continuous plant environments and assembly lines.</p>
+            </div>
+            <div class="card">
+                <span class="tag">Compact Solutions</span>
+                <h3 style="margin-top: 10px;">Mini PCs & AIO Desktops</h3>
+                <p>Space-saving, ultra-efficient computing packages perfect for modern retail points, corporate offices, and institutions.</p>
+            </div>
+            <div class="card">
+                <span class="tag">Commercial Automation</span>
+                <h3 style="margin-top: 10px;">Self-Service Kiosks</h3>
+                <p>Interactive, rugged touchscreen display kiosks customized for retail checkouts, ticketing, and customer service.</p>
