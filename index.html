@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VR Enterprises | Next-Gen Compute Infrastructure</title>
+    <title>VR Enterprises | Enterprise Portal</title>
     <script src="https://cloudflare.com"></script>
     <style>
-        /* Enterprise CSS Global Rules */
+        /* Enterprise Global Core Rules */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background: #ffffff; color: #111827; line-height: 1.5; scroll-behavior: smooth; }
+        body { background: #ffffff; color: #111827; line-height: 1.5; }
         
-        /* Dell-Inspired Fixed Header Navigation */
+        /* Sticky Header Matrix Configuration */
         header { position: sticky; top: 0; background: #ffffff; border-bottom: 1px solid #e5e7eb; z-index: 1000; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: #1e3a8a; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: #1e3a8a; cursor: pointer; }
         nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { text-decoration: none; color: #4b5563; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
+        nav a { text-decoration: none; color: #4b5563; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: color 0.2s; }
         nav a:hover, nav a.active { color: #1d4ed8; }
 
-        /* Full-Width Promotional Hero Arena */
+        /* MULTI-PAGE TAB CONTROL PANEL SYSTEM MAPPINGS */
+        .web-app-page { display: none; }
+        .web-app-page.active-view { display: block; }
+
+        /* Full-Width Front Hero Banners */
         .hero-banner { background: #f8fafc; padding: 6rem 2rem; text-align: center; border-bottom: 1px solid #e5e7eb; }
         .hero-banner .badge { font-size: 0.85rem; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 0.75rem; }
         .hero-banner h1 { font-size: 3.25rem; color: #1e3a8a; font-weight: 800; margin-bottom: 1rem; letter-spacing: -1px; }
@@ -29,29 +33,27 @@
         .btn-outline { background: #ffffff; border: 1px solid #1e3a8a; color: #1e3a8a; margin-left: 1rem; }
         .btn-outline:hover { background: #f8fafc; }
 
-        .section-layout { max-width: 1400px; margin: 0 auto; padding: 5rem 2rem; border-bottom: 1px solid #f3f4f6; }
+        .section-layout { max-width: 1400px; margin: 0 auto; padding: 5rem 2rem; }
         .section-header-title { font-size: 2rem; color: #1e3a8a; font-weight: 700; text-align: center; margin-bottom: 0.5rem; }
         .section-subtitle { text-align: center; color: #4b5563; max-width: 700px; margin: 0 auto 3.5rem auto; font-size: 1.05rem; }
 
-        /* About & Corporate Story Layout Blocks */
+        /* Profile Layout Grid Sets */
         .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin-top: 2rem; }
         .story-card { padding: 2rem; border-radius: 6px; background: #ffffff; border: 1px solid #e5e7eb; border-top: 4px solid #1e3a8a; }
         .story-card h3 { color: #1e3a8a; margin-bottom: 1rem; font-size: 1.3rem; }
-        .story-card p { color: #4b5563; font-size: 0.95rem; }
 
-        /* Explore by Category Product Showcase Image Grid Layout */
+        /* Explorer Category Visual Cards Display */
         .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
         .category-card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #ffffff; transition: all 0.3s; display: flex; flex-direction: column; }
         .category-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.08); border-color: #0284c7; }
         
         .product-visual-box { width: 100%; height: 200px; background: #f8fafc; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 1px solid #e5e7eb; color: #9ca3af; font-size: 3.5rem; position: relative; }
         .product-visual-box span { font-size: 0.75rem; font-weight: 700; color: #ffffff; background: #1e3a8a; padding: 0.3rem 0.6rem; border-radius: 3px; position: absolute; top: 0.75rem; right: 0.75rem; text-transform: uppercase; }
-        
         .card-details-area { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .card-details-area h3 { font-size: 1.15rem; color: #1e3a8a; margin-bottom: 0.5rem; font-weight: 700; }
         .card-details-area p { font-size: 0.88rem; color: #4b5563; margin-bottom: 1.5rem; }
 
-        /* Customization Wizard Flow Grid Blueprint */
+        /* Configuration Flow Splitting Panels */
         .wizard-layout { display: grid; grid-template-columns: 1fr; gap: 3rem; }
         @media(min-width: 992px) { .wizard-layout { grid-template-columns: 1.7fr 1.3fr; } }
         
@@ -70,7 +72,7 @@
         .sel-title { font-weight: 700; font-size: 0.95rem; color: #111827; display: block; }
         .sel-desc { font-size: 0.8rem; color: #4b5563; margin-top: 0.25rem; display: block; }
 
-        /* Technical Specification Blueprint Sidebar Panel (No Prices) */
+        /* Sticky Blueprint Invoicing Tracker Menu layout */
         .invoice-sidebar { border: 1px solid #1e3a8a; padding: 2rem; border-radius: 8px; height: fit-content; background: #ffffff; }
         @media (min-width: 992px) { .invoice-sidebar { position: sticky; top: 6rem; } }
         .blueprint-heading { font-size: 1.25rem; font-weight: 800; color: #1e3a8a; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -79,55 +81,48 @@
         .invoice-list span { color: #4b5563; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
         .invoice-list strong { color: #111827; font-size: 0.95rem; }
 
-        /* End-to-End Service Desk Support Layout Forms */
+        /* End-to-End Service Desk Support Forms */
         .service-panel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; }
         .form-element { margin-bottom: 1.25rem; }
         .form-element label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; color: #374151; }
         .form-element input, .form-element select, .form-element textarea { width: 100%; padding: 0.8rem; border: 1px solid #e5e7eb; border-radius: 4px; font-size: 0.95rem; outline: none; background: #ffffff; color: #111827; }
         .form-element input:focus, .form-element select:focus, .form-element textarea:focus { border-color: #1e3a8a; }
 
-        footer { border-top: 1px solid #e5e7eb; padding: 3rem 2rem; text-align: center; color: #6b7280; font-size: 0.9rem; background: #f8fafc; }
+        footer { border-top: 1px solid #e5e7eb; padding: 3rem 2rem; text-align: center; color: #6b7280; font-size: 0.9rem; background: #f8fafc; margin-top: 5rem; }
     </style>
 </head>
 <body>
 
-    <!-- Dell Style Header Navbar -->
+    <!-- Unified Enterprise Header Navbar Menu -->
     <header>
         <div class="nav-container">
-            <div class="logo">VR ENTERPRISES</div>
+            <div class="logo" onclick="navigateToPage('home-view')">VR ENTERPRISES</div>
             <nav>
                 <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#categories">Explore Categories</a></li>
-                    <li><a href="#configurator">Configurator Portal</a></li>
-                    <li><a href="#lifecycle">Service Desk</a></li>
+                    <li><a id="nav-home" class="active" onclick="navigateToPage('home-view')">Home</a></li>
+                    <li><a id="nav-configurator" onclick="navigateToPage('configurator-view')">Configurator Portal</a></li>
+                    <li><a id="nav-lifecycle" onclick="navigateToPage('lifecycle-view')">Service Desk</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    
-    <section id="home" class="hero-banner">
-        <span class="badge">Custom Hardware Infrastructure</span>
-        <h1>Celebrate More. Charge Less.</h1>
-        <p>Select your exact component arrays from our verified production metrics. Customize Mini PCs and Kiosk Standees down to the specific chipset without standard pricing restrictions.</p>
-        <a href="#configurator" class="btn">Build Custom System</a>
-        <a href="#categories" class="btn btn-outline">Explore Categories</a>
-    </section>
-
-    <!-- 1. Corporate Profile Story Module -->
-    <section id="about" class="section-layout">
-        <h2 class="section-header-title">Our Corporate Story</h2>
-        <p class="section-subtitle">A heritage of technical excellence, assembling persistent high-reliability infrastructure platforms since 2003.</p>
+    <!-- SECTION PAGE 1: THE CORE CORPORATE IDENTITY LAYER -->
+    <main id="home-view" class="web-app-page active-view">
+        <section class="hero-banner">
+            <span class="badge">Custom Hardware Infrastructure</span>
+            <h1>Celebrate More. Charge Less.</h1>
+            <p>Select your exact component arrays from our verified production metrics. Customize Mini PCs and Kiosk Standees down to the specific chipset without standard pricing restrictions.</p>
+            <button class="btn" onclick="navigateToPage('configurator-view')">Build Custom System</button>
+        </main>
         
-        <div class="story-grid">
-            <div class="story-card">
-                <h3>15+ Years Hardware Expertise</h3>
-                <p>Founded by technical experts with extensive multi-brand sales and field engineering background (HP, Dell, Lenovo, Asus, Acer), VR Enterprises delivers premium computing layers engineered down to the exact chipset parameter layouts required by your facility.</p>
-            </div>
-            <div class="story-card">
-                <h3>Turnkey Production Rigor</h3>
-                <p>We do not accept generic limits. Every client system goes through rigorous pre-production component isolation matrix mapping, high-temperature environmental burn-in stress runs, and strict quality control checklists prior to logistics box dispatch.</p>
-            </div>
-        </div>
+        <section class="section-layout">
+            <h2 class="section-header-title">Our Corporate Story</h2>
+            <p class="section-subtitle">A heritage of technical excellence, assembling persistent high-reliability infrastructure platforms since 2003.</p>
+            <div class="story-grid">
+                <div class="story-card">
+                    <h3>15+ Years Hardware Expertise</h3>
+                    <p>Founded by technical experts with extensive multi-brand sales and field engineering background (HP, Dell, Lenovo, Asus, Acer), VR Enterprises delivers premium computing layers engineered down to the exact chipset layouts required by your facility.</p>
+                </div>
+                <div class="story-card">
+                    <h3>Turnkey Production Rigor</h3>
