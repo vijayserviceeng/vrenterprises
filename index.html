@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Enterprises | Next-Gen Compute Infrastructure</title>
+    <script src="https://cloudflare.com"></script>
+    <style>
+        /* Enterprise Theme Rules */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: #ffffff; color: #111827; line-height: 1.6; }
+        
+        /* Fixed Single Header Navigation */
+        header { position: sticky; top: 0; background: #ffffff; border-bottom: 1px solid #e5e7eb; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; }
+        .logo { font-size: 1.35rem; font-weight: 800; color: #1e3a8a; letter-spacing: 0.5px; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { text-decoration: none; color: #4b5563; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
+        nav a:hover, nav a.active { color: #1e3a8a; }
 
+        /* Hero Banner */
+        .hero { max-width: 900px; margin: 0 auto; padding: 6rem 2rem 4rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.75rem; color: #1e3a8a; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.15rem; color: #4b5563; margin-bottom: 2.5rem; }
+        
+        /* Modern Buttons styling */
+        .btn { display: inline-block; background: #1e3a8a; color: #ffffff; padding: 0.75rem 1.75rem; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s; border: none; cursor: pointer; }
+        .btn:hover { background: #0284c7; }
+        .btn-outline { background: #ffffff; border: 1px solid #1e3a8a; color: #1e3a8a; margin-left: 1rem; }
+        .btn-outline:hover { background: #f8fafc; }
+
+        /* Main Workspace Container - FIXED FOR SIDE-BY-SIDE COLUMNS */
+        .main-wrapper { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid #e5e7eb; }
+        .grid-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem; }
+        
+        @media (min-width: 992px) {
+            .grid-layout { grid-template-columns: 1.8fr 1.2fr; gap: 3rem; }
+        }
+        
+        .section-title { font-size: 1.75rem; color: #1e3a8a; font-weight: 700; margin-bottom: 0.5rem; }
+        .section-desc { color: #4b5563; margin-bottom: 2rem; }
+        .panel { border: 1px solid #e5e7eb; padding: 2rem; border-radius: 8px; background: #ffffff; }
+
+        /* Step Configuration Cards */
+        .step-block { margin-bottom: 2.5rem; border-bottom: 1px dashed #e5e7eb; padding-bottom: 2rem; }
+        .step-block:last-child { border-bottom: none; padding-bottom: 0; }
+        .step-header { font-weight: 600; font-size: 1.1rem; color: #1f2937; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        
+        /* FIXED OPTION GRID SIZING */
+        .option-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        @media(min-width: 576px) {
+            .option-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+        }
+        
+        .option-card { border: 2px solid #e5e7eb; padding: 1.25rem; border-radius: 6px; cursor: pointer; transition: all 0.2s; background: #ffffff; }
+        .option-card:hover { border-color: #0284c7; }
+        .option-card.selected { border-color: #1e3a8a; background: #f8fafc; }
+        .opt-title { font-weight: 600; font-size: 0.95rem; display: block; color: #111827; }
+        .opt-desc { font-size: 0.8rem; color: #4b5563; margin-top: 0.25rem; display: block; }
+        .opt-price { font-size: 0.9rem; color: #0284c7; font-weight: 600; margin-top: 0.5rem; display: block; }
+
+        /* Dynamic Sidebar Invoice Tracker */
+        .sidebar { border: 1px solid #1e3a8a; height: fit-content; }
+        @media (min-width: 992px) {
+            .sidebar { position: sticky; top: 6rem; }
+        }
+        .price-tag { font-size: 2.25rem; font-weight: 800; color: #1e3a8a; margin: 1rem 0; }
+        .summary-list { list-style: none; margin-bottom: 2rem; font-size: 0.9rem; }
+        .summary-list li { margin-bottom: 0.75rem; display: flex; justify-content: space-between; border-bottom: 1px solid #f3f4f6; padding-bottom: 0.5rem; gap: 1rem; }
+        .summary-list span { color: #4b5563; min-width: 100px; }
+        .summary-list strong { text-align: right; }
+        
+        footer { border-top: 1px solid #e5e7eb; padding: 2.5rem 2rem; text-align: center; color: #6b7280; font-size: 0.9rem; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+
+    <!-- Clean Single Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">VR ENTERPRISES</div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#configurator">Configurator</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Core Landing Hero Area -->
+    <section id="home" class="hero">
+        <h1>Next-Gen Compute Infrastructure<br>Custom Engineered Here.</h1>
+        <p>Custom hardware setups built for industrial automation, high-end production facilities, high-scale corporate data layouts, and commercial platforms throughout Tamil Nadu.</p>
+        <a href="#configurator" class="btn">Launch Quote Configurator</a>
+        <a href="#home" class="btn btn-outline">Explore Hardware Catalog</a>
+    </section>
+
+    <!-- Interactive Enterprise Configuration Workspace -->
+    <section id="configurator" class="main-wrapper">
+        <h2 class="section-title">Interactive Kiosk Deployment Guide</h2>
+        <p class="section-desc">Select your cabinet size, micro-compute cores, and localized peripheral choices to map out an automated transaction station built to your exact specifications.</p>
+        
+        <div class="grid-layout">
+            <!-- Left Workspace Form Configurations -->
+            <div class="panel">
+                
+                <!-- Step 1 Layout selection -->
+                <div class="step-block">
+                    <div class="step-header"><i class="fa-solid fa-vector-square" style="color:#1e3a8a;"></i> Step 1: Choose Standee Cabinet & Touch Size</div>
+                    <div class="option-grid">
+                        <div class="option-card selected" onclick="selectItem('cabinet', 'Standard 21.5-inch Slim Standee', 45000, this)">
+                            <span class="opt-title">Standard Slim Standee</span>
+                            <span class="opt-desc">Integrated 21.5" Full HD Touch display + sleek retail footprint.</span>
+                            <span class="opt-price">₹45,000 Base</span>
+                        </div>
+                        <div class="option-card" onclick="selectItem('cabinet', 'Heavy-Duty 32-inch Commercial Kiosk', 68000, this)">
+                            <span class="opt-title">Heavy-Duty Commercial Standee</span>
+                            <span class="opt-desc">Ruggedized 32" Interactive panel configured for high-traffic ticketing.</span>
+                            <span class="opt-price">+ ₹23,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 Internal compute architecture selection -->
+                <div class="step-block">
+                    <div class="step-header"><i class="fa-solid fa-microchip" style="color:#0284c7;"></i> Step 2: Choose Internal Compute Core (Mini PC)</div>
+                    <div class="option-grid">
+                        <div class="option-card selected" onclick="selectItem('core', 'Intel 10th-Gen Mini PC (Commercial Grade)', 0, this)">
+                            <span class="opt-title">Intel Core Node</span>
+                            <span class="opt-desc">LGA1200 10th-Gen processor loop. Perfect for simple web/cloud services.</span>
+                            <span class="opt-price">Included</span>
+                        </div>
+                        <div class="option-card" onclick="selectItem('core', 'Industrial Mini-ITX (GPIO + Watchdog Core)', 12500, this)">
+                            <span class="opt-title">Industrial Core (Frozen BOM)</span>
+                            <span class="opt-desc">Equipped with Hardware Watchdog Timer, GPIO paths, and eDP display controls.</span>
+                            <span class="opt-price">+ ₹12,500</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Fixed Dynamic Cost Tracking Sidebar -->
+            <div class="panel sidebar">
+                <h3 style="font-size: 1.15rem; color: #1e3a8a; font-weight: 700;">Configuration Summary</h3>
+                <div class="price-tag" id="liveTotalPrice">₹45,000</div>
+                
+                <ul class="summary-list">
+                    <li><span>Cabinet:</span> <strong id="sum-cabinet">Standard 21.5-inch Slim Standee</strong></li>
+                    <li><span>Compute Unit:</span> <strong id="sum-core">Intel 10th-Gen Mini PC (Commercial Grade)</strong></li>
+                </ul>
+
+                <button class="btn" style="width: 100%; text-align: center; margin-bottom: 0.5rem;" onclick="alert('Redirecting to secure payment billing pipeline...')">Proceed to Order & Pay</button>
+                <button class="btn btn-outline" style="width: 100%; text-align: center; margin-left: 0;" onclick="alert('Exporting custom system quotation sheet in PDF...')">Save Technical Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 VR Enterprises. Tamil Nadu Enterprise Advantage. All Rights Reserved.</p>
