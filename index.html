@@ -3,140 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VR Enterprises | Premium Compute Configurations</title>
+    <title>Enterprise Hardware Procurement Portal</title>
+    <!-- Tailwind CSS for layout -->
+    <script src="https://jsdelivr.net"></script>
+    <!-- html2pdf.js for generating PDF quotes -->
     <script src="https://cloudflare.com"></script>
     <style>
-        /* Modern Clean Workspace Theme */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background: #ffffff; color: #1f2937; line-height: 1.6; }
-        
-        header { position: sticky; top: 0; background: #ffffff; border-bottom: 1px solid #e5e7eb; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; }
-        .logo { font-size: 1.4rem; font-weight: 800; color: #1e3a8a; }
-        nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { text-decoration: none; color: #4b5563; font-weight: 600; font-size: 0.95rem; }
-        nav a:hover, nav a.active { color: #1e3a8a; }
-
-        .main-wrapper { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
-        .section-title { font-size: 2.25rem; color: #1e3a8a; font-weight: 700; text-align: center; margin-bottom: 0.5rem; }
-        .section-subtitle { text-align: center; color: #4b5563; margin-bottom: 3rem; font-size: 1.05rem; }
-
-        /* Step-by-Step Customer Selection Instructional Guide Bar */
-        .guide-box { background: #f0f4ff; border-left: 4px solid #1e3a8a; padding: 1.5rem; border-radius: 4px; margin-bottom: 3rem; }
-        .guide-box h3 { color: #1e3a8a; font-size: 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .guide-box ol { padding-left: 1.25rem; font-size: 0.95rem; color: #374151; }
-        .guide-box li { margin-bottom: 0.25rem; }
-
-        /* Grid Layout Fixes for Two Column Displays */
-        .grid-layout { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
-        @media(min-width: 992px) { .grid-layout { grid-template-columns: 1.7fr 1.3fr; } }
-        
-        .panel { border: 1px solid #e5e7eb; padding: 2rem; border-radius: 8px; background: #ffffff; }
-        .step-block { margin-bottom: 3rem; }
-        .step-header { font-weight: 700; font-size: 1.2rem; color: #1f2937; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.6rem; }
-        .step-desc { font-size: 0.88rem; color: #6b7280; margin-bottom: 1.5rem; }
-
-        /* Custom Interactive Visual Card Item Grids */
-        .option-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
-        @media(min-width: 576px) { .option-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); } }
-        
-        .option-card { border: 2px solid #e5e7eb; padding: 0; border-radius: 8px; cursor: pointer; transition: all 0.2s; background: #ffffff; overflow: hidden; display: flex; flex-direction: column; }
-        .option-card:hover { border-color: #0284c7; }
-        .option-card.selected { border-color: #1e3a8a; background: #f8fafc; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        
-        /* Product Placeholder Visual Containers */
-        .img-placeholder { width: 100%; height: 160px; background: #f3f4f6; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #e5e7eb; color: #9ca3af; font-size: 2.5rem; position: relative; }
-        .img-placeholder span { font-size: 0.8rem; font-weight: 700; color: #ffffff; background: rgba(30, 58, 138, 0.85); padding: 0.25rem 0.6rem; border-radius: 3px; position: absolute; top: 0.5rem; right: 0.5rem; text-transform: uppercase; }
-        
-        .card-details { padding: 1.25rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .opt-title { font-weight: 700; font-size: 1rem; color: #111827; }
-        .opt-desc { font-size: 0.825rem; color: #4b5563; margin-top: 0.25rem; display: block; }
-        .opt-price { font-size: 0.95rem; color: #0284c7; font-weight: 700; margin-top: 0.75rem; display: block; }
-
-        /* Dynamic Sidebar Cost Summary Panels */
-        .sidebar { border: 1px solid #1e3a8a; padding: 2rem; border-radius: 8px; height: fit-content; background: #ffffff; }
-        @media (min-width: 992px) { .sidebar { position: sticky; top: 6rem; } }
-        .price-tag { font-size: 2.5rem; font-weight: 800; color: #1e3a8a; margin: 1rem 0; }
-        .summary-list { list-style: none; margin-bottom: 2rem; font-size: 0.9rem; }
-        .summary-list li { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid #f3f4f6; gap: 1rem; }
-        .summary-list span { color: #4b5563; }
-        
-        .btn { display: block; width: 100%; background: #1e3a8a; color: #ffffff; padding: 0.85rem; border-radius: 4px; text-decoration: none; font-weight: 600; text-align: center; border: none; cursor: pointer; transition: background 0.2s; }
-        .btn:hover { background: #0284c7; }
-        .btn-outline { background: #ffffff; border: 1px solid #1e3a8a; color: #1e3a8a; margin-top: 0.5rem; }
-        .btn-outline:hover { background: #f8fafc; }
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: #f8fafc; }
     </style>
 </head>
-<body>
+<body class="text-slate-800">
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">VR ENTERPRISES</div>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active">Configurator Portal</a></li>
-                </ul>
+    <!-- Header Navigation -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl font-bold tracking-tight text-blue-400">ENTERPRISE</span>
+                <span class="text-lg text-slate-300 font-light">Hardware Architecture Portal</span>
+            </div>
+            <nav class="flex space-x-6 text-sm font-medium text-slate-300">
+                <a href="#catalog" class="hover:text-white transition">Product Catalog</a>
+                <a href="#cart-section" class="hover:text-white transition">Quote Cart</a>
+                <a href="#payment-section" class="hover:text-white transition">B2B Checkout</a>
             </nav>
         </div>
     </header>
 
-    <section class="main-wrapper">
-        <h2 class="section-title">Interactive Component Deployment Guide</h2>
-        <p class="section-subtitle">Follow our step-by-step layout selections to configure your system with live pricing summaries.</p>
+    <!-- Main Content Layout -->
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        
+        <!-- Corporate Intro -->
+        <section class="mb-12 bg-white rounded-xl p-8 shadow-sm border border-slate-100">
+            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Industrial & Enterprise Hardware Solutions</h1>
+            <p class="text-slate-600 max-w-3xl leading-relaxed">
+                Configure deployment-grade compute architectures tailored precisely to your operating environment. Select a platform tier below, customize major physical and technical hardware components, and instantly export official corporate quotes (`.pdf`) optimized for organizational procurement workflows.
+            </p>
+        </section>
 
-        <!-- Dynamic User Decision Guide Element -->
-        <div class="guide-box">
-            <h3><i class="fa-solid fa-circle-info"></i> How to Customize and Choose Your Product:</h3>
-            <ol>
-                <li><strong>Step 1 (Chassis Frame Selection):</strong> Pick your primary target hardware footprint profile. Each base choice updates your layout starting price.</li>
-                <li><strong>Step 2 (Motherboard Internal Mapping):</strong> Select standard commercial builds or industrial grade modules with Watchdog/GPIO protection circuits.</li>
-                <li><strong>Review Live Output Invoice:</strong> Check your sticky tracking parameters menu on the right. Once satisfied, click <em>Proceed to Order & Pay</em> to process billing.</li>
-            </ol>
-        </div>
-
-        <div class="grid-layout">
-            <!-- Left Workspace Form Container Content -->
-            <div class="panel">
+        <!-- Dynamic Catalog Configuration Engine -->
+        <section id="catalog" class="mb-16">
+            <h2 class="text-2xl font-bold text-slate-950 mb-8 border-b border-slate-200 pb-3">Product Catalog & Spec Customizer</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Step 1 Form Row Array -->
-                <div class="step-block">
-                    <div class="step-header"><i class="fa-solid fa-layer-group" style="color:#1e3a8a;"></i> Step 1: Choose Hardware Footprint Enclosure</div>
-                    <div class="step-desc">Select your primary infrastructure target casing line. Your selection dynamically shifts base template pricing calculations.</div>
-                    
-                    <div class="option-grid">
-                        <div class="option-card selected" onclick="updateCost('base', 'Self-Service Kiosk Terminal', 45000, this)">
-                            <!-- Simulated Product Visualization Graphic Node -->
-                            <div class="img-placeholder" style="background-color: #f8fafc;"><i class="fa-solid fa-display"></i><span>Kiosk Chassis</span></div>
-                            <div class="card-details">
-                                <div>
-                                    <span class="opt-title">Self-Service Kiosk Standee</span>
-                                    <span class="opt-desc">Premium Slim Steel Standee frame with integrated 21.5" Full HD interactive touch panels.</span>
-                                </div>
-                                <span class="opt-price">₹45,000 Base</span>
+                <!-- CARD 1: KIOSK SYSTEMS -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col transition hover:shadow-md">
+                    <img src="https://unsplash.com" alt="Kiosk Systems" class="h-48 w-full object-cover bg-slate-100">
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-slate-900">Interactive Kiosks</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Custom Builds</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">Self-ordering, digital wayfinding, biometric registration, and ruggedized ticketing transaction enclosures.</p>
+                        
+                        <div class="space-y-3 mb-6 text-sm flex-1">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Target Sector / Industry</label>
+                                <select id="kiosk-industry" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded p-2 focus:ring-2 focus:ring-blue-500" onchange="updateKioskPrice()">
+                                    <option value="retail">Retail & QSR Self-Checkout (+ ₹45,000)</option>
+                                    <option value="healthcare">Healthcare Patient Check-In (+ ₹65,000)</option>
+                                    <option value="transit">Transit Hub Ticketing (+ ₹85,000)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Core Processing Node</label>
+                                <select id="kiosk-cpu" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded p-2 focus:ring-2 focus:ring-blue-500" onchange="updateKioskPrice()">
+                                    <option value="i3">Intel Core i3 Core Base Tier (+ ₹15,000)</option>
+                                    <option value="i5">Intel Core i5 Standard Performance (+ ₹28,000)</option>
+                                    <option value="i7">Intel Core i7 Heavy Compute Edge (+ ₹42,000)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Integrated Peripheral</label>
+                                <select id="kiosk-peripheral" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded p-2 focus:ring-2 focus:ring-blue-500" onchange="updateKioskPrice()">
+                                    <option value="none">Standard Display Panel Only (+ ₹0)</option>
+                                    <option value="printer">Thermal Receipt Printer (+ ₹8,500)</option>
+                                    <option value="scanner">2D Barcode & QR Code Reader (+ ₹6,000)</option>
+                                    <option value="biometric">Biometric Fingerprint Scanner (+ ₹12,500)</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="option-card" onclick="updateCost('base', 'Industrial Fanless PC Node', 32000, this)">
-                            <div class="img-placeholder" style="background-color: #f8fafc;"><i class="fa-solid fa-microchip"></i><span>IPC Node</span></div>
-                            <div class="card-details">
-                                <div>
-                                    <span class="opt-title">Industrial Fanless PC</span>
-                                    <span class="opt-desc">Dust-resilient heavy automation chassis featuring zero fan silent thermal cooling vents.</span>
-                                </div>
-                                <span class="opt-price">₹32,000 Base</span>
+                        
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-medium">Estimated Price</span>
+                                <span class="text-xl font-extrabold text-slate-900" id="kiosk-total">₹60,000</span>
                             </div>
-                        </div>
-                        <div class="option-card" onclick="updateCost('base', 'Enterprise Rack Server (1U/2U)', 75000, this)">
-                            <div class="img-placeholder" style="background-color: #f8fafc;"><i class="fa-solid fa-server"></i><span>Rack Array</span></div>
-                            <div class="card-details">
-                                <div>
-                                    <span class="opt-title">High-Density Rack Server</span>
-                                    <span class="opt-desc">1U/2U corporate rack infrastructure optimized for high speed virtual storage calculations.</span>
-                                </div>
-                                <span class="opt-price">₹75,000 Base</span>
-                            </div>
+                            <button onclick="addToCart('Interactive Kiosk', getKioskDescription(), document.getElementById('kiosk-total').innerText)" class="bg-slate-900 text-white font-medium text-sm px-4 py-2 rounded-lg hover:bg-blue-600 transition shadow-sm">Add Config</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 2 Form Row Array -->
-                <div class="step-block" style="margin-bottom:0;">
+                <!-- CARD 2: INDUSTRIAL PCs -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col transition hover:shadow-md">
+                    <img src="https://unsplash.com" alt="Industrial PCs" class="h-48 w-full object-cover bg-slate-100">
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-slate-900">Industrial PCs</h3>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded">IP Rated</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">Fanless automation units constructed for extreme temperature thresholds and heavy dust exposure.</p>
+                        
+                        <div class="space-y-3 mb-6 text-sm flex-1">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Ingress Protection Rating</label>
+                                <select id="ipc-protection" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded p-2 focus:ring-2 focus:ring-blue-500" onchange="updateIPCPrice()">
+                                    <option value="ip50">IP50 Standard Dust Protected Base (+ ₹35,000)</option>
+                                    <option value="ip65">IP65 Fanless Waterproof/Dustproof Shell (+ ₹55,000)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Processor Selection</label>
+                                <select id="ipc-cpu" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded p-2 focus:ring-2 focus:ring-blue-500" onchange="updateIPCPrice()">
+                                    <option value="atom">Intel Atom Low-Power Efficient Core (+ ₹12,000)</option>
+                                    <option value="i5">Intel Core i5 Ruggedized SoC Node (+ ₹32,000)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-medium">Estimated Price</span>
+                                <span class="text-xl font-extrabold text-slate-900" id="ipc-total">₹47,000</span>
+                            </div>

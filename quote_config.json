@@ -1,0 +1,17 @@
+{
+  "companyName": "Enterprise Hardware Solutions",
+  "currency": "INR",
+  "supportedCategories": [
+    "Computers",
+    "Mini PCs",
+    "All-in-One Desktops",
+    "Industrial PCs",
+    "Servers",
+    "Kiosks"
+  ],
+  "featuresEnabled": {
+    "dynamicHardwareSelector": true,
+    "pdfQuoteGeneration": true,
+    "mockB2BPaymentGateway": true
+  }
+}
