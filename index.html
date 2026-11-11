@@ -3,132 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VR Enterprises | Enterprise Compute Infrastructure</title>
-    <script src="https://cloudflare.com"></script>
+    <title>VR Enterprises</title>
     <style>
-        /* Enterprise Theme Rules */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background: #ffffff; color: #111827; line-height: 1.6; }
-        
-        /* Sticky Top Navigation Bar */
-        header { position: sticky; top: 0; background: #ffffff; border-bottom: 1px solid #e5e7eb; z-index: 1000; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: #1e3a8a; text-decoration: none; }
-        nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { text-decoration: none; color: #4b5563; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
-        nav a:hover, nav a.active { color: #1d4ed8; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-        /* Dell-Inspired Hero Banner */
-        .hero-banner { background: #f8fafc; padding: 6rem 2rem; text-align: center; border-bottom: 1px solid #e5e7eb; }
-        .hero-banner .badge { font-size: 0.85rem; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 0.75rem; }
-        .hero-banner h1 { font-size: 3.25rem; color: #1e3a8a; font-weight: 800; margin-bottom: 1rem; letter-spacing: -1px; }
-        .hero-banner p { font-size: 1.25rem; color: #4b5563; max-width: 800px; margin: 0 auto 2.5rem auto; }
-        
-        /* Interactive Buttons */
-        .btn { display: inline-block; background: #1e3a8a; color: #ffffff; padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer; transition: background 0.2s; }
-        .btn:hover { background: #1d4ed8; }
-        .btn-outline { background: #ffffff; border: 1px solid #1e3a8a; color: #1e3a8a; margin-left: 1rem; }
-        .btn-outline:hover { background: #f8fafc; }
+        body {
+            background-color: #0b1c3c;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-        /* Section Layout Wrappers */
-        .section-layout { max-width: 1400px; margin: 0 auto; padding: 5rem 2rem; border-bottom: 1px solid #f3f4f6; }
-        .section-header-title { font-size: 2rem; color: #1e3a8a; font-weight: 700; text-align: center; margin-bottom: 0.5rem; }
-        .section-subtitle { text-align: center; color: #4b5563; max-width: 700px; margin: 0 auto 3.5rem auto; font-size: 1.05rem; }
+        .poster-container {
+            width: 1000px;
+            background: linear-gradient(135deg, #0b1c3c 0%, #153265 50%, #0b1c3c 100%);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #2a4c82;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
 
-        /* Corporate Background Story Cards */
-        .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin-top: 2rem; }
-        .story-card { padding: 2rem; border-radius: 6px; background: #ffffff; border: 1px solid #e5e7eb; border-top: 4px solid #1e3a8a; }
-        .story-card h3 { color: #1e3a8a; margin-bottom: 1rem; font-size: 1.3rem; }
-        .story-card p { color: #4b5563; font-size: 0.95rem; }
+        /* Background Circuit Overlay effect */
+        .poster-container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
 
-        /* Explore By Category Grids */
-        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .category-card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #ffffff; transition: all 0.3s; display: flex; flex-direction: column; }
-        .category-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.08); border-color: #0284c7; }
-        
-        .product-visual-box { width: 100%; height: 200px; background: #f8fafc; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 1px solid #e5e7eb; color: #9ca3af; font-size: 3.5rem; position: relative; }
-        .product-visual-box span { font-size: 0.75rem; font-weight: 700; color: #ffffff; background: #1e3a8a; padding: 0.3rem 0.6rem; border-radius: 3px; position: absolute; top: 0.75rem; right: 0.75rem; text-transform: uppercase; }
-        .card-details-area { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-details-area h3 { font-size: 1.15rem; color: #1e3a8a; margin-bottom: 0.5rem; font-weight: 700; }
-        .card-details-area p { font-size: 0.88rem; color: #4b5563; margin-bottom: 1.5rem; }
+        /* Top Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-        footer { border-top: 1px solid #e5e7eb; padding: 3rem 2rem; text-align: center; color: #6b7280; font-size: 0.9rem; background: #f8fafc; }
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: #8fa4c7;
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            font-size: 14px;
+            color: #d0e1f9;
+        }
+
+        nav a {
+            color: #d0e1f9;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #b0c4de;
+        }
+
+        .hero-image img {
+            width: 320px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+
+        /* Configurator Rows */
+        .config-list {
+            padding: 0 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .config-item {
+            background: rgba(25, 45, 80, 0.6);
+            border: 1px solid #32588f;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+
+        .config-item img {
+            width: 90px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .config-desc {
+            flex: 1;
+            padding: 0 25px;
+        }
+
+        .config-desc h3 {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .config-desc p {
+            font-size: 12px;
+            color: #a3badc;
+            line-height: 1.4;
+        }
+
+        .config-btn {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            min-width: 160px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Sector Icons Bar */
+        .sectors-bar {
+            background: rgba(10, 20, 40, 0.7);
+            border-top: 1px solid #2a4c82;
+            border-bottom: 1px solid #2a4c82;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 40px;
+        }
+
+        .sector-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #d0e1f9;
+        }
+
+        .sector-item span {
+            font-size: 18px;
+        }
+
+        /* Footer Features Bar */
+        .features-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 25px 40px;
+            background: rgba(15, 30, 60, 0.4);
+        }
+
+        .feature-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 170px;
+        }
+
+        .feature-icon {
+            font-size: 22px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-text h4 {
+            font-size: 11px;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        /* Bottom Copyright */
+        .footer-bottom {
+            text-align: right;
+            padding: 10px 40px 20px 40px;
+            font-size: 11px;
+            color: #7b93bb;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Professional Navigation Bar (Links jump directly to physical files) -->
-    <header>
-        <div class="nav-container">
-            <a href="index.html" class="logo">VR ENTERPRISES</a>
+    <div class="poster-container">
+        
+        <!-- Header -->
+        <header>
+            <div class="logo-area">
+                <div class="logo-text">VR ENTERPRISES</div>
+                <div class="logo-sub">Innovative Technology, Unlimited Possibilities.</div>
+            </div>
             <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="configurator.html">Configurator Portal</a></li>
-                    <li><a href="support.html">Service Desk</a></li>
-                </ul>
+                <a href="#">Supports</a>
+                <span>|</span>
+                <a href="#">About Us</a>
+                <span>|</span>
+                <a href="#">Contact</a>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <!-- Hero Promotional Banner Section -->
-    <section class="hero-banner">
-        <span class="badge">Custom Hardware Infrastructure</span>
-        <h1>Celebrate More. Charge Less.</h1>
-        <p>Custom OEM systems built for industrial automation, high-end corporate infrastructure, and localized digital touch platforms throughout Tamil Nadu.</p>
-        <a href="configurator.html" class="btn">Shop Configurations</a>
-        <a href="#explore" class="btn btn-outline">Explore Categories</a>
-    </section>
-
-    <!-- Corporate Profile Story Section -->
-    <section class="section-layout">
-        <h2 class="section-header-title">Our Corporate Profile</h2>
-        <p class="section-subtitle">A legacy of technical excellence, assembling persistent high-reliability hardware lines since 2003.</p>
-        
-        <div class="story-grid">
-            <div class="story-card">
-                <h3>15+ Years Hardware Expertise</h3>
-                <p>Founded by engineers with deep sales and hardware deployment experience across top industry brands (HP, Dell, Lenovo, Asus, Acer), VR Enterprises crafts customized client hardware systems mapped exactly to complex facility operations.</p>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Next-Gen Computing,<br>Custom Built.</h1>
+                <p>Affordable, high-performance solutions tailored to your exact specifications—for business, creativity, engineering, and automation.</p>
             </div>
-            <div class="story-card">
-                <h3>Turnkey Production Rigor</h3>
-                <p>We do not accept shortcut limits. Every build layout undergoes long-cycle thermal burn-in testing, component validation checks, and intensive pre-production matrix matching to maximize continuous system uptime.</p>
+            <div class="hero-image">
+                <svg width="280" height="180" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="40" width="180" height="120" rx="4" fill="#1e3a8a" stroke="#60a5fa" stroke-width="2"/>
+                    <rect x="60" y="50" width="160" height="90" fill="#0f172a"/>
+                    <path d="M70 120 L100 90 L130 110 L170 70 L210 130 Z" fill="#2563eb" opacity="0.6"/>
+                    <rect x="120" y="160" width="60" height="10" rx="2" fill="#3b82f6"/>
+                    <rect x="240" y="30" width="40" height="100" rx="4" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+                    <circle cx="260" cy="50" r="4" fill="#ef4444"/>
+                    <circle cx="260" cy="65" r="4" fill="#22c55e"/>
+                </svg>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Explore by Category Section -->
-    <section id="explore" class="section-layout" style="border: none;">
-        <h2 class="section-header-title">Explore by Category</h2>
-        <p class="section-subtitle">Select a hardware family to open its architectural specification layout options inside the custom manager panel.</p>
-        
-        <div class="category-grid">
-            <div class="category-card">
-                <div class="product-visual-box"><i class="fa-solid fa-display"></i><span>BOM Blueprint</span></div>
-                <div class="card-details-area">
-                    <div>
-                        <h3>Self-Service Kiosks</h3>
-                        <p>High-durability cabinet enclosures mapped to hold internal compute nodes, high-speed thermal printers, spike busters, and responsive touch panels.</p>
-                    </div>
-                    <a href="configurator.html" class="btn" style="text-align: center;">Select Architecture</a>
+        <!-- Configuration Options List -->
+        <div class="config-list">
+            
+            <!-- Row 1 -->
+            <div class="config-item">
+                <svg width="70" height="50" viewBox="0 0 100 70"><rect x="10" y="10" width="50" height="40" fill="#1e3a8a"/><rect x="65" y="5" width="25" height="50" fill="#0f172a" stroke="#3b82f6"/></svg>
+                <div class="config-desc">
+                    <h3>Standard computing platforms available in Mid Tower and Slim-Tower designs.</h3>
+                    <p>Built for everyday productivity, office administration, accounting, and software design. Trusted across education, healthcare, retail, banking, and corporate environments.</p>
                 </div>
+                <button class="config-btn">Configure Your Own<br>Desktop</button>
             </div>
-            <div class="category-card">
-                <div class="product-visual-box"><i class="fa-solid fa-microchip"></i><span>Micro Compute</span></div>
-                <div class="card-details-area">
-                    <div>
-                        <h3>Mini PC & Industrial Desktops</h3>
-                        <p>Space-saving, rugged computing nodes designed for plant floor stability. Configured around H410 motherboards with Watchdog Timers and GPIO support.</p>
-                    </div>
-                    <a href="configurator.html" class="btn" style="text-align: center;">Select Architecture</a>
+
+            <!-- Row 2 -->
+            <div class="config-item">
+                <svg width="70" height="50" viewBox="0 0 100 70"><rect x="15" y="20" width="70" height="30" rx="4" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/></svg>
+                <div class="config-desc">
+                    <h3>Energy efficient platforms in an ultra compact, space saving form factor.</h3>
+                    <p>Engineered for reduced power consumption, extended operating hours, and smooth multitasking.</p>
                 </div>
+                <button class="config-btn">Configure Your Own<br>Mini PC</button>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="config-item">
+                <svg width="70" height="50" viewBox="0 0 100 70"><rect x="10" y="10" width="55" height="45" fill="#1e3a8a"/><circle cx="37" cy="32" r="12" fill="#3b82f6"/></svg>
+                <div class="config-desc">
+                    <h3>High-performance platforms built for demanding creative, media, and gaming workflows.</h3>
+                    <p>Delivering smooth rendering for graphic design, 3D animation, audio, and 4K video editing. Tailored for content creators, media studios, animators, and entertainment professionals.</p>
+                </div>
+                <button class="config-btn">Configure Your Own<br>Multimedia System</button>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="config-item">
+                <svg width="70" height="50" viewBox="0 0 100 70"><rect x="25" y="5" width="45" height="55" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/><line x1="35" y1="15" x2="60" y2="15" stroke="#60a5fa" stroke-width="3"/></svg>
+                <div class="config-desc">
+                    <h3>Advanced multi-core and multi-threaded platforms for intensive computational tasks.</h3>
+                    <p>Equipped with high-speed memory support for CAD, simulations, and virtualization. Designed for engineers, architects, researchers, data analysts, and industrial R&D.</p>
+                </div>
+                <button class="config-btn">Configure Your Own<br>Workstation</button>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="config-item">
+                <svg width="70" height="50" viewBox="0 0 100 70"><rect x="10" y="15" width="80" height="12" fill="#1e3a8a"/><rect x="10" y="35" width="80" height="12" fill="#1e3a8a"/></svg>
+                <div class="config-desc">
+                    <h3>Enterprise grade scalable platforms built for continuous 24/7 mission-critical operation.</h3>
+                    <p>Featuring extensive storage expansion, power redundancy, and high speed network communication.</p>
+                </div>
+                <button class="config-btn">Configure Your Own<br>Server</button>
+            </div>
+
+        </div>
+
+        <!-- Sectors Bar -->
+        <div class="sectors-bar">
+            <div class="sector-item"><span>🎓</span> Education</div>
+            <div class="sector-item"><span>💼</span> Business</div>
+            <div class="sector-item"><span>🎨</span> Creativity</div>
+            <div class="sector-item"><span>⚙️</span> Industrial</div>
+            <div class="sector-item"><span>🏢</span> Enterprise</div>
+        </div>
+
+        <!-- Features Bar -->
+        <div class="features-bar">
+            <div class="feature-box">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-text"><h4>Genuine Brand Components</h4></div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">✔️</div>
+                <div class="feature-text"><h4>Quality Assured Products</h4></div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">⚙️</div>
+                <div class="feature-text"><h4>Custom Configuration Solutions</h4></div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">🚚</div>
+                <div class="feature-text"><h4>Committed On-Time Delivery</h4></div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">🎧</div>
+                <div class="feature-text"><h4>Dedicated Follow-Up & Support</h4></div>
             </div>
         </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2026 VR Enterprises. Tamil Nadu Compute Infrastructure Engine. All Rights Reserved.</p>
-    </footer>
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            © 2025 Enterprices. All rights reserved.
+        </div>
+
+    </div>
 
 </body>
 </html>
